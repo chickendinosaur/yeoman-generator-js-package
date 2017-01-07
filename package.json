@@ -1,0 +1,28 @@
+{
+  "name": "@chickendinosaur/generator-module",
+  "version": "0.0.1",
+  "description": "Scaffolding generator for JavaScript modules.",
+  "main": "generators/app/index.js",
+  "scripts": {},
+  "keywords": [
+    "yeoman-generator",
+    "module"
+  ],
+  "author": "John Pittman",
+  "license": "MIT",
+  "files": [
+    "generators"
+  ],
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chickendinosaur/yeoman-generator-module.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chickendinosaur/yeoman-generator-module/issues"
+  },
+  "homepage": "https://github.com/chickendinosaur/yeoman-generator-module#readme",
+  "dependencies": {
+    "yeoman-generator": "^0.24.1"
+  }
+}
