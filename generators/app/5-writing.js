@@ -35,10 +35,31 @@ module.exports = function () {
 	mkdirSync('lib');
 	mkdirSync('test');
 	mkdirSync('data');
+
+	// Create main files.
+	var mainPath = this.pkg.main.split('/');
+	if (mainPath[0].length === 0) {
+		mainPath = 'index.js';
+	}
+
+	var fileNameExt = mainPath.pop();
+	var fileNameExtFrags = fileNameExt.split('.');
+	var fileExt = fileNameExtFrags.pop();
+	var fileName = fileNameExtFrags.join('.');
+
+	writeFileSync('src/' + fileNameExt);
+	writeFileSync('benchmark/' + fileNameExt);
+	writeFileSync('test/' + fileName + '.tap.' + fileExt);
 };
 
 function mkdirSync(path) {
 	if (!fs.existsSync(path)) {
 		fs.mkdirSync(path);
+	}
+}
+
+function writeFileSync(path) {
+	if (!fs.existsSync(path)) {
+		fs.writeFileSync(path);
 	}
 }
