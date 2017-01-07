@@ -13,7 +13,7 @@ npm install @chickendinosaur/generator-module
 
 ## Usage
 
-#### CLI:  
+#### CLI  
 yo @chickendinosaur/module  
 
 ---  

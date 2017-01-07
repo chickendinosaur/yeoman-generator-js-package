@@ -30,9 +30,15 @@ module.exports = function () {
 	this.spawnCommand('git', ['init']);
 
 	// Create folder structure.
-	fs.mkdirSync('src');
-	fs.mkdirSync('benchmark');
-	fs.mkdirSync('lib');
-	fs.mkdirSync('test');
-	fs.mkdirSync('data');
+	mkdirSync('src');
+	mkdirSync('benchmark');
+	mkdirSync('lib');
+	mkdirSync('test');
+	mkdirSync('data');
 };
+
+function mkdirSync(path) {
+	if (!fs.existsSync(path)) {
+		fs.mkdirSync(path);
+	}
+}
