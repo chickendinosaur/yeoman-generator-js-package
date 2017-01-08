@@ -1,6 +1,7 @@
 'use strict';
 
 const fs = require('fs');
+const execSync = require('child_process').execSync;
 
 module.exports = function () {
 	// Write in memory files.
@@ -27,7 +28,8 @@ module.exports = function () {
 	}
 
 	// Init git repo.
-	this.spawnCommand('git', ['init']);
+	execSync('git init');
+	execSync('git remote add origin ' + this.answers.repo);
 
 	// Create folder structure.
 	mkdirSync('src');

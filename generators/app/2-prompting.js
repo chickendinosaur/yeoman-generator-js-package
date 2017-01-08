@@ -32,6 +32,10 @@ module.exports = function () {
 		message: 'keywords:',
 		default: this.pkg.keywords,
 		filter: (input) => {
+			if (input.constructor === String) {
+				input = input.split(',');
+			}
+
 			// Check for duplicates.
 			for (var i = 0; i < input.length; ++i) {
 				if (this.pkg.keywords.indexOf(input[i]) < 0) {
@@ -70,6 +74,8 @@ module.exports = function () {
 		message: 'repository:',
 		default: this.pkg.homepage
 	}]).then((answers) => {
+		this.answers = answers;
+
 		this.pkg.name = answers.name;
 		this.pkg.version = answers.version;
 		this.pkg.description = answers.description;

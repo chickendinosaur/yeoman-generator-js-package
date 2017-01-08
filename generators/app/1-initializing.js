@@ -12,6 +12,8 @@ module.exports = function () {
 		licenseTemplates: this.sourceRoot() + '/licenses/'
 	};
 
+	this.answers;
+
 	// Populate answer from package.json
 	var pkgTemplate = this.fs.readJSON(this.paths.pkgTemplate);
 
