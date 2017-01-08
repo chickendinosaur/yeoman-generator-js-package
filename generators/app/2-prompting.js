@@ -38,12 +38,13 @@ module.exports = function () {
 
 			// Check for duplicates.
 			for (var i = 0; i < input.length; ++i) {
-				if (this.pkg.keywords.indexOf(input[i]) < 0) {
-					this.pkg.keywords.push(input[i]);
+				var keyword = input[i].trim();
+				if (this.pkg.keywords.indexOf(keyword) < 0) {
+					this.pkg.keywords.push(keyword);
 				}
 			}
 
-			return this.pkg.keywords;
+			return this.pkg.keywords.sort();
 		},
 		store: true
 	}, {

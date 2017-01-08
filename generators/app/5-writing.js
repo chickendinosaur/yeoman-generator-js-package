@@ -4,9 +4,6 @@ const fs = require('fs');
 const execSync = require('child_process').execSync;
 
 module.exports = function () {
-	// Write in memory files.
-	this.fs.writeJSON(this.paths.pkg, this.pkg);
-
 	// Copy templates.
 	if (!this.fs.exists(this.paths.gitignore)) {
 		this.fs.copy(this.paths.gitignoreTemplate, this.paths.gitignore);
@@ -54,12 +51,30 @@ module.exports = function () {
 	if (!this.fs.exists('src/' + fileNameExt)) {
 		this.fs.copy(this.sourceRoot() + '/index.js', 'src/' + fileNameExt);
 	}
+
 	if (!this.fs.exists('benchmark/' + fileNameExt)) {
 		this.fs.copy(this.sourceRoot() + '/index.benchmark.js', 'benchmark/' + fileNameExt);
 	}
-	if (!this.fs.exists('test/' + fileName + '.tap.' + fileExt)) {
-		this.fs.copy(this.sourceRoot() + '/index.tap.js', 'test/' + fileName + '.tap.' + fileExt);
+
+	var testFileNameExt = fileName + '.tap.' + fileExt;
+	if (!this.fs.exists('test/' + testFileNameExt)) {
+		this.fs.copy(this.sourceRoot() + '/index.tap.js', 'test/' + testFileNameExt);
 	}
+
+	// Update package.json field before write.
+	// Add all commands for main package file.
+	if (!fs.existsSync(this.paths.pkg)) {
+		this.pkg.scripts.benchmark = 'npm run benchmark-' + fileName;
+	}
+	this.pkg.scripts['benchmark-' + fileName] = 'npm run test-' + fileName + ' && node benchmark/' + fileNameExt;
+	this.pkg.scripts['build-' + fileName] = 'cp -f src/' + fileNameExt + ' lib/' + fileNameExt;
+	this.pkg.scripts['test-' + fileName] = 'npm run build-' + fileName + ' && tap test/' + testFileNameExt;
+
+	// Sort scripts.
+	this.pkg.scripts = generatedSortedObject(this.pkg.scripts);
+
+	// Write in memory files.
+	this.fs.writeJSON(this.paths.pkg, this.pkg);
 };
 
 function mkdirSync(path) {
@@ -72,4 +87,18 @@ function writeFileSync(path, data, overwrite) {
 	if (!fs.existsSync(path) || overwrite) {
 		fs.writeFileSync(path, data);
 	}
+}
+
+function generatedSortedObject(obj) {
+	var scriptKeys = Object.keys(obj);
+	var newObj = {};
+
+	scriptKeys.sort();
+
+	for (var i = 0; i < scriptKeys.length; i++) {
+		var scriptKey = scriptKeys[i];
+		newObj[scriptKey] = obj[scriptKey];
+	}
+
+	return newObj;
 }

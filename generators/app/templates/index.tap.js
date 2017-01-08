@@ -1,18 +1,27 @@
 'use strict';
 
-const t = require('tap');
-
-// Run the supplied function when t.end() is called, or when the plan is met.
-t.teardown(function() {});
+const tap = require('tap');
+const test = tap.test;
+const beforeEach = tap.beforeEach;
+const afterEach = tap.afterEach;
+const teardown = tap.teardown;
 
 // Call the supplied function before every subsequent descendent test.
-t.beforeEach(function (done) {});
+beforeEach(function (done) {
+	done();
+});
 
 // Call the supplied function after every subsequent descendent test.
-t.afterEach(function (done) {});
+afterEach(function (done) {
+	done();
+});
 
-t.test('', function (assert) {
-	t.equal(1, 1);
+// Run the supplied function when t.end() is called, or when the plan is met.
+teardown(function() {});
 
+test('', {
+	todo: true
+}, function (t) {
+	t.equal(1, 1, '');
 	t.end();
 });

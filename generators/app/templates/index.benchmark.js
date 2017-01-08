@@ -15,6 +15,7 @@ function teardown() {}
 suite
 	.add('', function () {})
 	.on('cycle', function (event) {
+		console.log('');
 		console.log(String(event.target));
 		teardown();
 	})

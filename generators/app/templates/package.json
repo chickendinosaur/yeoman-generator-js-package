@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"main": "lib/index.js",
 	"scripts": {
-		"benchmark": "npm run test && node benchmark",
+		"benchmark": "",
 		"build": "npm run clean && cp -rf src/* lib/",
 		"clean": "rm -rf lib/*",
 		"prepublish": "npm run test",
