@@ -68,7 +68,7 @@ module.exports = function () {
 	}
 	this.pkg.scripts['benchmark-' + fileName] = 'npm run test-' + fileName + ' && node benchmark/' + fileNameExt;
 	this.pkg.scripts['build-' + fileName] = 'cp -f src/' + fileNameExt + ' lib/' + fileNameExt;
-	this.pkg.scripts['test-' + fileName] = 'npm run build-' + fileName + ' && tap test/' + testFileNameExt;
+	this.pkg.scripts['test-' + fileName] = 'npm run build-' + fileName + ' && tap test/' + testFileNameExt + '  --reporter spec';
 
 	// Sort scripts.
 	this.pkg.scripts = generatedSortedObject(this.pkg.scripts);
