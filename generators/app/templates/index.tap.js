@@ -6,6 +6,10 @@ const beforeEach = tap.beforeEach;
 const afterEach = tap.afterEach;
 const teardown = tap.teardown;
 
+/*
+Setup.
+*/
+
 // Call the supplied function before every subsequent descendent test.
 beforeEach(function (done) {
 	done();

@@ -35,7 +35,6 @@ module.exports = function () {
 	mkdirSync('benchmark');
 	mkdirSync('lib');
 	mkdirSync('test');
-	mkdirSync('data');
 
 	// Create main files.
 	var mainPath = this.pkg.main.split('/');

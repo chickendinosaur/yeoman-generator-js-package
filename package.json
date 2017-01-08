@@ -1,6 +1,6 @@
 {
   "name": "@chickendinosaur/generator-module",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Scaffolding generator for JavaScript modules.",
   "main": "generators/app/index.js",
   "scripts": {},

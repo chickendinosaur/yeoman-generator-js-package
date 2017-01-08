@@ -12,10 +12,15 @@ Teardown.
 
 function teardown() {}
 
+console.log('');
+console.log('Benchmark');
+console.log('');
+console.log('benchmark/');
+console.log('');
+
 suite
 	.add('', function () {})
 	.on('cycle', function (event) {
-		console.log('');
 		console.log(String(event.target));
 		teardown();
 	})
