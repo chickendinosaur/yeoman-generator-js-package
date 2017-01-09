@@ -32,8 +32,8 @@ module.exports = function () {
 		};
 	}
 
-	if (!this.pkg.module) {
-		this.pkg.module = {
+	if (!this.pkg['generator-module']) {
+		this.pkg['generator-module'] = {
 			'global': false
 		};
 	}

@@ -37,37 +37,30 @@ module.exports = function () {
 	mkdirSync('test');
 
 	// Create main files.
-	var mainPath = this.pkg.main.split('/');
-	if (mainPath[0].length === 0) {
-		mainPath = 'index.js';
+	if (!this.fs.exists('src/index.js')) {
+		this.fs.copy(this.sourceRoot() + '/index.js', 'src/index.js');
 	}
 
-	var fileNameExt = mainPath.pop();
-	var fileNameExtFrags = fileNameExt.split('.');
-	var fileExt = fileNameExtFrags.pop();
-	var fileName = fileNameExtFrags.join('.');
-
-	if (!this.fs.exists('src/' + fileNameExt)) {
-		this.fs.copy(this.sourceRoot() + '/index.js', 'src/' + fileNameExt);
+	if (!this.fs.exists('benchmark/index.js')) {
+		this.fs.copy(this.sourceRoot() + '/index.benchmark.js', 'benchmark/index.js');
 	}
 
-	if (!this.fs.exists('benchmark/' + fileNameExt)) {
-		this.fs.copy(this.sourceRoot() + '/index.benchmark.js', 'benchmark/' + fileNameExt);
+	if (!this.fs.exists('benchmark/module.benchmark.js')) {
+		this.fs.copy(this.sourceRoot() + '/module.benchmark.js', 'benchmark/module.benchmark.js');
 	}
 
-	var testFileNameExt = fileName + '.tap.' + fileExt;
-	if (!this.fs.exists('test/' + testFileNameExt)) {
-		this.fs.copy(this.sourceRoot() + '/index.tap.js', 'test/' + testFileNameExt);
+	if (!this.fs.exists('test/moduleSpec.js')) {
+		this.fs.copy(this.sourceRoot() + '/moduleSpec.tap.js', 'test/moduleSpec.tap.js');
 	}
 
 	// Update package.json field before write.
 	// Add all commands for main package file.
 	if (!fs.existsSync(this.paths.pkg)) {
-		this.pkg.scripts.benchmark = 'npm run benchmark-' + fileName;
+		this.pkg.scripts.benchmark = 'npm run test && node benchmark';
+		this.pkg.scripts['benchmark-module'] = 'npm run test-module && node benchmark/module.benchmark.js';
+		this.pkg.scripts['build-module'] = 'cp -f src/index.js lib/index.js';
+		this.pkg.scripts['test-module'] = 'npm run build-module && tap test/moduleSpec.tap.js --reporter spec';
 	}
-	this.pkg.scripts['benchmark-' + fileName] = 'npm run test-' + fileName + ' && node benchmark/' + fileNameExt;
-	this.pkg.scripts['build-' + fileName] = 'cp -f src/' + fileNameExt + ' lib/' + fileNameExt;
-	this.pkg.scripts['test-' + fileName] = 'npm run build-' + fileName + ' && tap test/' + testFileNameExt + '  --reporter spec';
 
 	// Sort scripts.
 	this.pkg.scripts = generatedSortedObject(this.pkg.scripts);

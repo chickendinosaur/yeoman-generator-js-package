@@ -22,7 +22,7 @@
 		"url": "https://github.com/repoNamespace/repoName/issues"
 	},
 	"homepage": "https://github.com/repoNamespace/repoName#readme",
-	"module": {
+	"generator-module": {
 		"global" : false
 	}
 }

@@ -6,6 +6,8 @@ const beforeEach = tap.beforeEach;
 const afterEach = tap.afterEach;
 const teardown = tap.teardown;
 
+const index = require('../src/index');
+
 /*
 Setup.
 */
@@ -21,11 +23,12 @@ afterEach(function (done) {
 });
 
 // Run the supplied function when t.end() is called, or when the plan is met.
-teardown(function() {});
+teardown(function () {});
 
 test('', {
 	todo: true
 }, function (t) {
+	t.ok(index);
 	t.equal(1, 1, '');
 	t.end();
 });

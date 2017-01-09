@@ -22,12 +22,6 @@ module.exports = function () {
 		store: true
 	}, {
 		type: 'input',
-		name: 'main',
-		message: 'main:',
-		default: this.pkg.main,
-		store: true
-	}, {
-		type: 'input',
 		name: 'keywords',
 		message: 'keywords:',
 		default: this.pkg.keywords,
@@ -80,7 +74,6 @@ module.exports = function () {
 		this.pkg.name = answers.name;
 		this.pkg.version = answers.version;
 		this.pkg.description = answers.description;
-		this.pkg.main = answers.main;
 		this.pkg.keywords = answers.keywords;
 		this.pkg.author.name = answers.authorName;
 		this.pkg.author.email = answers.authorEmail;
