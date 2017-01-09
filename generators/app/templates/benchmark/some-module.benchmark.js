@@ -2,6 +2,8 @@ require('lodash');
 Benchmark = require('benchmark');
 const suite = new Benchmark.Suite;
 
+const someModule = require('../src/some-module');
+
 /*
 Setup.
 */
@@ -19,7 +21,9 @@ console.log('benchmark/module.benchmark.js');
 console.log('');
 
 suite
-	.add('', function () {})
+	.add('someModule', function () {
+		typeof someModule === 'object';
+	})
 	.on('cycle', function (event) {
 		console.log(String(event.target));
 		teardown();

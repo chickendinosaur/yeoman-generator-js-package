@@ -17,7 +17,7 @@ module.exports = function () {
 		this.fs.copyTpl(
 			this.paths.readmeTemplate,
 			this.paths.readme, {
-				packageName: this.pkg.module.global ? this.pkg.name + ' -g' : this.pkg.name,
+				packageName: this.pkg['generator-module'].global ? this.pkg.name + ' -g' : this.pkg.name,
 				description: this.pkg.description,
 				license: this.fs.read(this.paths.license)
 			}
@@ -38,28 +38,19 @@ module.exports = function () {
 
 	// Create main files.
 	if (!this.fs.exists('src/index.js')) {
-		this.fs.copy(this.sourceRoot() + '/index.js', 'src/index.js');
+		this.fs.copy(this.sourceRoot() + '/src/index.js', 'src/index.js');
 	}
 
-	if (!this.fs.exists('benchmark/index.js')) {
-		this.fs.copy(this.sourceRoot() + '/index.benchmark.js', 'benchmark/index.js');
+	if (!this.fs.exists('src/some-module.js')) {
+		this.fs.copy(this.sourceRoot() + '/src/some-module.js', 'src/some-module.js');
 	}
 
-	if (!this.fs.exists('benchmark/module.benchmark.js')) {
-		this.fs.copy(this.sourceRoot() + '/module.benchmark.js', 'benchmark/module.benchmark.js');
+	if (!this.fs.exists('benchmark/some-module.benchmark.js')) {
+		this.fs.copy(this.sourceRoot() + '/benchmark/some-module.benchmark.js', 'benchmark/some-module.benchmark.js');
 	}
 
-	if (!this.fs.exists('test/moduleSpec.js')) {
-		this.fs.copy(this.sourceRoot() + '/moduleSpec.tap.js', 'test/moduleSpec.tap.js');
-	}
-
-	// Update package.json field before write.
-	// Add all commands for main package file.
-	if (!fs.existsSync(this.paths.pkg)) {
-		this.pkg.scripts.benchmark = 'npm run test && node benchmark';
-		this.pkg.scripts['benchmark-module'] = 'npm run test-module && node benchmark/module.benchmark.js';
-		this.pkg.scripts['build-module'] = 'cp -f src/index.js lib/index.js';
-		this.pkg.scripts['test-module'] = 'npm run build-module && tap test/moduleSpec.tap.js --reporter spec';
+	if (!this.fs.exists('test/some-module.js')) {
+		this.fs.copy(this.sourceRoot() + '/test/some-module.tap.js', 'test/some-module.tap.js');
 	}
 
 	// Sort scripts.

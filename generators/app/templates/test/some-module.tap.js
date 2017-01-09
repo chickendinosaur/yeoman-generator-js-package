@@ -6,7 +6,7 @@ const beforeEach = tap.beforeEach;
 const afterEach = tap.afterEach;
 const teardown = tap.teardown;
 
-const index = require('../src/index');
+const someModule = require('../src/some-module');
 
 /*
 Setup.
@@ -28,7 +28,6 @@ teardown(function () {});
 test('', {
 	todo: true
 }, function (t) {
-	t.ok(index);
-	t.equal(1, 1, '');
+	t.equal(typeof someModule === 'object', true, '');
 	t.end();
 });
