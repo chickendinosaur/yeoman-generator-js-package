@@ -24,12 +24,6 @@ module.exports = function () {
 		);
 	}
 
-	// Init git repo.
-	if (!fs.existsSync('.git')) {
-		execSync('git init');
-		execSync('git remote add origin ' + this.answers.repo);
-	}
-
 	// Create folder structure.
 	mkdirSync('src');
 	mkdirSync('benchmark');
