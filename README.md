@@ -9,12 +9,12 @@ Scaffolding generator for JavaScript modules.
 #### npm  
 
 npm install yeoman -g  
-npm install @chickendinosaur/generator-module  
+npm install @chickendinosaur/generator-js-package  
 
 ## Usage
 
 #### CLI  
-yo @chickendinosaur/module  
+yo @chickendinosaur/js-package  
 
 ---  
 
