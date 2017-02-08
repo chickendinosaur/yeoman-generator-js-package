@@ -6,7 +6,7 @@ const beforeEach = tap.beforeEach;
 const afterEach = tap.afterEach;
 const teardown = tap.teardown;
 
-const someModule = require('../src/some-module');
+const someModule = require('../src/index');
 
 /*
 Setup.

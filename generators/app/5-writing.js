@@ -1,7 +1,6 @@
 'use strict';
 
 const fs = require('fs');
-const execSync = require('child_process').execSync;
 
 module.exports = function () {
 	// Copy templates.
@@ -31,20 +30,20 @@ module.exports = function () {
 	mkdirSync('test');
 
 	// Create main files.
+	// if (!this.fs.exists('src/index.js')) {
+	// 	this.fs.copy(this.sourceRoot() + '/src/index.js', 'src/index.js');
+	// }
+
 	if (!this.fs.exists('src/index.js')) {
 		this.fs.copy(this.sourceRoot() + '/src/index.js', 'src/index.js');
 	}
 
-	if (!this.fs.exists('src/some-module.js')) {
-		this.fs.copy(this.sourceRoot() + '/src/some-module.js', 'src/some-module.js');
+	if (!this.fs.exists('benchmark/index.benchmark.js')) {
+		this.fs.copy(this.sourceRoot() + '/benchmark/index.js', 'benchmark/index.js');
 	}
 
-	if (!this.fs.exists('benchmark/some-module.benchmark.js')) {
-		this.fs.copy(this.sourceRoot() + '/benchmark/some-module.benchmark.js', 'benchmark/some-module.benchmark.js');
-	}
-
-	if (!this.fs.exists('test/some-module.js')) {
-		this.fs.copy(this.sourceRoot() + '/test/some-module.tap.js', 'test/some-module.tap.js');
+	if (!this.fs.exists('test/index.js')) {
+		this.fs.copy(this.sourceRoot() + '/test/index.tap.js', 'test/index.tap.js');
 	}
 
 	// Sort scripts.

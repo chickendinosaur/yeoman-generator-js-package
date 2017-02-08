@@ -3,14 +3,11 @@
 	"version": "0.0.1",
 	"main": "lib/index.js",
 	"scripts": {
-		"benchmark": "npm run benchmark-some-module",
-		"benchmark-some-module": "npm run test-some-module && node benchmark/some-module.benchmark.js",
+		"benchmark": "npm run test && node benchmark/index.js",
 		"build": "npm run clean && cp -rf src/* lib/",
-		"build-some-module": "cp -f src/some-module.js lib/some-module.js",
 		"clean": "rm -rf lib/*",
 		"prepublish": "npm run test",
-		"test": "npm run build && tap test/**/*.tap.js --reporter spec",
-		"test-some-module": "npm run build-some-module && tap test/some-module.tap.js --reporter spec"
+		"test": "npm run build && tap test/**/*.tap.js --reporter spec"
 	},
 	"author": "",
 	"license": "MIT",
