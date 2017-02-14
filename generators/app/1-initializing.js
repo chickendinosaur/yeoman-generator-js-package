@@ -50,8 +50,11 @@ module.exports = function () {
 
 	// Development dependencies to install
 	this.devDependencies = [
+		'babel-cli',
+		'babel-preset-es2015',
+		'babel-preset-stage-0',
 		'benchmark',
-		'tap'
+		'jest'
 	];
 };
 

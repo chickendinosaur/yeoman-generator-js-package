@@ -8,7 +8,11 @@ module.exports = function () {
 		this.fs.copy(this.paths.gitignoreTemplate, this.paths.gitignore);
 	}
 
-	if (!this.fs.exists(this.paths.license)) {
+	if (!this.fs.exists(this.destinationPath() + '/.babelrc')) {
+		this.fs.copy(this.sourceRoot() + '/.babelrc', this.destinationPath() + '/.babelrc');
+	}
+
+	if (!this.fs.exists('.babelrc')) {
 		this.fs.copy(this.paths.licenseTemplates + this.pkg.license, this.paths.license);
 	}
 
@@ -25,25 +29,22 @@ module.exports = function () {
 
 	// Create folder structure.
 	mkdirSync('src');
-	mkdirSync('benchmark');
-	mkdirSync('lib');
-	mkdirSync('test');
 
 	// Create main files.
-	// if (!this.fs.exists('src/index.js')) {
-	// 	this.fs.copy(this.sourceRoot() + '/src/index.js', 'src/index.js');
-	// }
+	var mainFilename = 'src/' + this.pkg.main.split('/')[1];
 
-	if (!this.fs.exists('src/index.js')) {
-		this.fs.copy(this.sourceRoot() + '/src/index.js', 'src/index.js');
+	if (!this.fs.exists(mainFilename)) {
+		this.fs.copy(this.sourceRoot() + '/' + mainFilename, 'src/index.js');
 	}
 
-	if (!this.fs.exists('benchmark/index.benchmark.js')) {
-		this.fs.copy(this.sourceRoot() + '/benchmark/index.js', 'benchmark/index.js');
+	var benchmarkFilename = mainFilename.replace('.js', '.benchmark.js');
+	if (!this.fs.exists('src/index.benchmark.js')) {
+		this.fs.copy(this.sourceRoot() + '/' + benchmarkFilename, benchmarkFilename);
 	}
 
-	if (!this.fs.exists('test/index.js')) {
-		this.fs.copy(this.sourceRoot() + '/test/index.tap.js', 'test/index.tap.js');
+	var testFilename = mainFilename.replace('.js', '.spec.js');
+	if (!this.fs.exists(testFilename)) {
+		this.fs.copy(this.sourceRoot() + '/' + testFilename, testFilename);
 	}
 
 	// Sort scripts.

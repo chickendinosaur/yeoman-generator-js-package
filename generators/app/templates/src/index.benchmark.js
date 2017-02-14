@@ -1,8 +1,6 @@
 require('lodash');
-Benchmark = require('benchmark');
+const Benchmark = require('benchmark');
 const suite = new Benchmark.Suite;
-
-const index = require('../lib/index');
 
 /*
 Setup.
@@ -17,13 +15,11 @@ function teardown() {}
 console.log('');
 console.log('Benchmark');
 console.log('');
-console.log('benchmark/index.js');
+console.log('index.benchmark.js');
 console.log('');
 
 suite
-	.add('index', function () {
-		typeof index === 'object';
-	})
+	.add('index', function () {})
 	.on('cycle', function (event) {
 		console.log(String(event.target));
 		teardown();
