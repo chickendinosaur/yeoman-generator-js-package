@@ -7,7 +7,7 @@
 		"build": "npm run clean && babel src -d build && babel build -d lib --ignore *.spec.js",
 		"clean": "rm -rf lib && rm -rf build*",
 		"prepublish": "npm run test",
-		"test": "npm run build && jest"
+		"test": "npm run build && tap build/**/*.spec.js --reporter spec"
 	},
 	"author": "",
 	"license": "MIT",
@@ -24,9 +24,5 @@
 	"homepage": "https://github.com/repoNamespace/repoName#readme",
 	"generator-module": {
 		"global": false
-	},
-	"jest": {
-		"testPathDirs": ["build"],
-		"testRegex": "\\.spec\\.js$"
 	}
 }

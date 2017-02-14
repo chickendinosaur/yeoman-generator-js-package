@@ -12,7 +12,7 @@ module.exports = function () {
 		this.fs.copy(this.sourceRoot() + '/.babelrc', this.destinationPath() + '/.babelrc');
 	}
 
-	if (!this.fs.exists('.babelrc')) {
+	if (!this.fs.exists(this.paths.license)) {
 		this.fs.copy(this.paths.licenseTemplates + this.pkg.license, this.paths.license);
 	}
 

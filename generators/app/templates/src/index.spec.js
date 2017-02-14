@@ -1,17 +1,23 @@
 'use strict';
 
+const tap = require('tap');
+const test = tap.test;
+const beforeEach = tap.beforeEach;
+
 /*
 Setup
 */
 
-beforeEach(function () {});
+beforeEach(function (done) {
+});
 
 /*
-Tests
+Test
 */
 
-describe('Object', function () {
-	test('test', function () {
-		expect(true).toBe(true);
-	});
+test('suite', {
+	todo: true
+}, function (t) {
+	t.equal(true, null, 'test.');
+	t.end();
 });

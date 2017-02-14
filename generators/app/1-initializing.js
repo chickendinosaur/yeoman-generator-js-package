@@ -54,7 +54,7 @@ module.exports = function () {
 		'babel-preset-es2015',
 		'babel-preset-stage-0',
 		'benchmark',
-		'jest'
+		'tap'
 	];
 };
 
