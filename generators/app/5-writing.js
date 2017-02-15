@@ -31,7 +31,7 @@ module.exports = function () {
 	mkdirSync('src');
 
 	// Create main files.
-	var mainFilename = 'src/' + this.pkg.main.split('/')[1];
+	var mainFilename = 'src/' + this.pkg.main;
 
 	if (!this.fs.exists(mainFilename)) {
 		this.fs.copy(this.sourceRoot() + '/' + mainFilename, 'src/index.js');

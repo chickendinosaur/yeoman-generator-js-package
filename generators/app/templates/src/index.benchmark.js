@@ -13,8 +13,6 @@ Teardown.
 function teardown() {}
 
 console.log('');
-console.log('Benchmark');
-console.log('');
 console.log('index.benchmark.js');
 console.log('');
 

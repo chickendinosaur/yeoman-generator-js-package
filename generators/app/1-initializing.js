@@ -51,8 +51,7 @@ module.exports = function () {
 	// Development dependencies to install
 	this.devDependencies = [
 		'babel-cli',
-		'babel-preset-es2015',
-		'babel-preset-stage-0',
+		'babel-plugin-transform-es2015-modules-commonjs',
 		'benchmark',
 		'tap'
 	];
