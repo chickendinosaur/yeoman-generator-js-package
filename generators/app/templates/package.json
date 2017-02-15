@@ -2,6 +2,9 @@
 	"name": "",
 	"version": "0.0.1",
 	"main": "lib/index.js",
+	"files": [
+		"lib/"
+	],
 	"scripts": {
 		"benchmark": "npm run test && node lib/index.benchmark.js",
 		"build": "npm run clean && babel src -d build && babel build -d lib --ignore *.spec.js",
