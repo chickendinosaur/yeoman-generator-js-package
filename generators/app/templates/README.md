@@ -55,6 +55,10 @@ Result
 
 * npm run test
 
+## Publish  
+
+* npm run deploy
+
 ---  
 
 # License  

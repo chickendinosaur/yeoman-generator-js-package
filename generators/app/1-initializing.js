@@ -53,7 +53,9 @@ module.exports = function () {
 		'babel-cli',
 		'babel-plugin-transform-es2015-modules-commonjs',
 		'benchmark',
-		'tap'
+		'tape',
+		'tapes',
+		'tap-spec'
 	];
 };
 

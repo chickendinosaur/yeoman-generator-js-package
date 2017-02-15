@@ -14,8 +14,8 @@ npm install @chickendinosaur/generator-js-package
 ## Usage
 
 #### CLI  
-yo @chickendinosaur/js-package  
 
+yo @chickendinosaur/js-package  
 ---  
 
 # Development  

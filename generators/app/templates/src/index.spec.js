@@ -1,23 +1,46 @@
 'use strict';
 
-const tap = require('tap');
-const test = tap.test;
-const beforeEach = tap.beforeEach;
+const tape = require('tape');
+const tapes = require('tapes');
+const test = tapes(tape, {
+	delimiter: ' '
+});
 
 /*
 Setup
 */
 
-beforeEach(function (done) {
-});
-
 /*
 Test
 */
 
-test('suite', {
-	todo: true
-}, function (t) {
-	t.equal(true, null, 'test.');
+test('Class', function (t) {
+
+	/*
+	beforeEach
+	*/
+
+	t.beforeEach(function (t) {
+		t.end();
+	});
+
+	/*
+	afterEach
+	*/
+
+	t.afterEach(function (t) {
+		t.end();
+	});
+
+	/*
+	Tests
+	*/
+
+	t.test('.method', function (t) {
+		t.equal(true, true, 'Test.');
+		t.end();
+	});
+
 	t.end();
 });
+
