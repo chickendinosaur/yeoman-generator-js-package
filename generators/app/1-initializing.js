@@ -1,5 +1,7 @@
 'use strict';
 
+const arrayUnion = require('array-union');
+
 module.exports = function () {
 	this.paths = {
 		pkg: this.destinationPath() + '/package.json',
@@ -42,21 +44,24 @@ module.exports = function () {
 		this.pkg.homepage.split('#')[0] :
 		'https://github.com/repoNamespace/repoName';
 
+	// Merge scripts from sub-generators.
+	this.pkg.scripts = Object.assign(this.pkg.scripts, this.options.scripts);
+
 	// Peer dependencies to install
-	this.peerDependencies = [];
+	this.peerDependencies = arrayUnion([], this.options.peerDependencies);
 
 	// dependencies to install
-	this.dependencies = [];
+	this.dependencies = arrayUnion([], this.options.peerDependencies);
 
 	// Development dependencies to install
-	this.devDependencies = [
+	this.devDependencies = arrayUnion([
 		'babel-cli',
 		'babel-plugin-transform-es2015-modules-commonjs',
 		'benchmark',
 		'tape',
 		'tapes',
 		'tap-spec'
-	];
+	], this.options.devDependencies);
 };
 
 /**
