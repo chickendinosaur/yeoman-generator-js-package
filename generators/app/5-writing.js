@@ -9,7 +9,7 @@ module.exports = function () {
 	}
 
 	if (!this.fs.exists(this.destinationPath() + '/.babelrc')) {
-		this.fs.copy(this.sourceRoot() + '/.babelrc', this.destinationPath() + '/.babelrc');
+		this.fs.copy(__dirname + '/templates' + '/.babelrc', this.destinationPath() + '/.babelrc');
 	}
 
 	if (!this.fs.exists(this.paths.license)) {
@@ -31,21 +31,11 @@ module.exports = function () {
 	mkdirSync('src');
 
 	// Create main files.
-	var mainFilename = 'src/' + this.pkg.main;
-
-	if (!this.fs.exists(mainFilename)) {
-		this.fs.copy(this.sourceRoot() + '/' + mainFilename, 'src/index.js');
-	}
-
-	var benchmarkFilename = mainFilename.replace('.js', '.benchmark.js');
-	if (!this.fs.exists('src/index.benchmark.js')) {
-		this.fs.copy(this.sourceRoot() + '/' + benchmarkFilename, benchmarkFilename);
-	}
-
-	var testFilename = mainFilename.replace('.js', '.spec.js');
-	if (!this.fs.exists(testFilename)) {
-		this.fs.copy(this.sourceRoot() + '/' + testFilename, testFilename);
-	}
+	var mainFilePath = 'src/' + this.pkg.main;
+	this.fs.copy(
+		__dirname + '/templates/' + mainFilePath,
+		this.destinationPath(mainFilePath)
+	);
 
 	// Sort scripts.
 	this.pkg.scripts = generatedSortedObject(this.pkg.scripts);

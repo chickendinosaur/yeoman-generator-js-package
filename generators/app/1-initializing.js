@@ -5,13 +5,13 @@ const arrayUnion = require('array-union');
 module.exports = function () {
 	this.paths = {
 		pkg: this.destinationPath() + '/package.json',
-		pkgTemplate: this.sourceRoot() + '/package.json',
+		pkgTemplate: __dirname + '/templates' + '/package.json',
 		readme: this.destinationPath() + '/README.md',
-		readmeTemplate: this.sourceRoot() + '/README.md',
+		readmeTemplate: __dirname + '/templates' + '/README.md',
 		gitignore: this.destinationPath() + '/.gitignore',
-		gitignoreTemplate: this.sourceRoot() + '/.gitignore',
+		gitignoreTemplate: __dirname + '/templates' + '/.gitignore',
 		license: this.destinationPath() + '/LICENSE',
-		licenseTemplates: this.sourceRoot() + '/licenses/'
+		licenseTemplates: __dirname + '/templates' + '/licenses/'
 	};
 
 	this.answers;
@@ -44,24 +44,25 @@ module.exports = function () {
 		this.pkg.homepage.split('#')[0] :
 		'https://github.com/repoNamespace/repoName';
 
+	// Dependency objects.
+	this.pkg.peerDependencies = {};
+	this.pkg.dependencies = {};
+	this.pkg.devDependencies = {};
+
 	// Merge scripts from sub-generators.
-	this.pkg.scripts = Object.assign(this.pkg.scripts, this.options.scripts);
+	this.pkg.scripts = Object.assign(this.pkg.scripts, this.options.scripts || {});
 
 	// Peer dependencies to install
-	this.peerDependencies = arrayUnion([], this.options.peerDependencies);
+	this.peerDependencies = arrayUnion([], this.options.peerDependencies || []);
 
 	// dependencies to install
-	this.dependencies = arrayUnion([], this.options.peerDependencies);
+	this.dependencies = arrayUnion([], this.options.peerDependencies || []);
 
 	// Development dependencies to install
 	this.devDependencies = arrayUnion([
 		'babel-cli',
-		'babel-plugin-transform-es2015-modules-commonjs',
-		'benchmark',
-		'tape',
-		'tapes',
-		'tap-spec'
-	], this.options.devDependencies);
+		'babel-plugin-transform-es2015-modules-commonjs'
+	], this.options.devDependencies || []);
 };
 
 /**

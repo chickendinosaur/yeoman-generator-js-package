@@ -7,19 +7,17 @@ module.exports = function () {
 		type: 'input',
 		name: 'name',
 		message: 'name:',
-		default: this.pkg.name.length > 0 ? this.pkg.name : this.appname // Default to current folder name
+		default: this.pkg.name.length > 0 ? this.pkg.name : 'package'
 	}, {
 		type: 'input',
 		name: 'version',
 		message: 'version:',
-		default: this.pkg.version,
-		store: true
+		default: this.pkg.version
 	}, {
 		type: 'input',
 		name: 'description',
 		message: 'description:',
-		default: this.pkg.description,
-		store: true
+		default: this.pkg.description
 	}, {
 		type: 'input',
 		name: 'keywords',
@@ -39,8 +37,7 @@ module.exports = function () {
 			}
 
 			return this.pkg.keywords.sort();
-		},
-		store: true
+		}
 	}, {
 		type: 'input',
 		name: 'authorName',
@@ -61,8 +58,7 @@ module.exports = function () {
 		name: 'license',
 		message: 'license:',
 		choices: fs.readdirSync(this.paths.licenseTemplates),
-		default: this.pkg.license,
-		store: true
+		default: this.pkg.license
 	}, {
 		type: 'input',
 		name: 'repo',

@@ -3,7 +3,7 @@
 const tape = require('tape');
 const tapes = require('tapes');
 const test = tapes(tape, {
-	delimiter: ' '
+	delimiter: '->'
 });
 
 /*

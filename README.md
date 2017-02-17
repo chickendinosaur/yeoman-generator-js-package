@@ -1,4 +1,4 @@
-Scaffolding generator for JavaScript modules.
+Scaffolding generator for JavaScript modules.  
 
 ---  
 
@@ -13,9 +13,54 @@ npm install @chickendinosaur/generator-js-package
 
 ## Usage
 
-#### CLI  
+Differences are a list of difference from the base generator.
+
+### CLI  
+
+#### base
 
 yo @chickendinosaur/js-package  
+
+Contains everything that a base npm package needs to publish.
+
+* npm run build
+* npm run clean
+* npm run deploy
+
+#### node
+
+Code that runs in nodejs.
+
+Differences:  
+
+* npm run benchmark  
+* npm run test  
+* Node testing/benchmarking  
+
+yo @chickendinosaur/js-package:node  
+
+#### browser
+
+Code that needs runs in the browser.
+
+yo @chickendinosaur/js-package:browser  
+
+Differences:  
+
+* npm run benchmark  
+* npm run test  
+* Browser testing/benchmarking  
+
+#### ui
+
+yo @chickendinosaur/js-package:ui  
+
+Visual UI components.
+
+Differences:  
+
+* npm start  
+
 ---  
 
 # Development  
