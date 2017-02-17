@@ -17,7 +17,7 @@ Differences are a list of difference from the base generator.
 
 ### base
 
-yo @chickendinosaur/js-package  
+#### yo @chickendinosaur/js-package  
 
 Contains everything that a base npm package needs to publish.
 
@@ -29,19 +29,20 @@ Contains everything that a base npm package needs to publish.
 
 Code that runs in nodejs.
 
+#### yo @chickendinosaur/js-package:node  
+
 #### Differences:  
 
 * npm run benchmark  
 * npm run test  
 * Node testing/benchmarking  
 
-yo @chickendinosaur/js-package:node  
 
 ### browser
 
-Code that needs runs in the browser.
+#### yo @chickendinosaur/js-package:browser  
 
-yo @chickendinosaur/js-package:browser  
+Code that needs runs in the browser.
 
 #### Differences:  
 
@@ -51,7 +52,7 @@ yo @chickendinosaur/js-package:browser
 
 ### ui
 
-yo @chickendinosaur/js-package:ui  
+#### yo @chickendinosaur/js-package:ui  
 
 Visual UI components.
 

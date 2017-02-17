@@ -20,7 +20,7 @@
 
 ## Installation
 
-#### npm  
+### npm  
 
 npm install <%= packageName %>
 
