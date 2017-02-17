@@ -6,7 +6,7 @@ Scaffolding generator for JavaScript modules.
 
 ## Installation
 
-#### npm  
+### npm  
 
 npm install yeoman -g  
 npm install @chickendinosaur/generator-js-package  
@@ -15,9 +15,7 @@ npm install @chickendinosaur/generator-js-package
 
 Differences are a list of difference from the base generator.
 
-### CLI  
-
-#### base
+### base
 
 yo @chickendinosaur/js-package  
 
@@ -27,11 +25,11 @@ Contains everything that a base npm package needs to publish.
 * npm run clean
 * npm run deploy
 
-#### node
+### node
 
 Code that runs in nodejs.
 
-Differences:  
+#### Differences:  
 
 * npm run benchmark  
 * npm run test  
@@ -39,25 +37,25 @@ Differences:
 
 yo @chickendinosaur/js-package:node  
 
-#### browser
+### browser
 
 Code that needs runs in the browser.
 
 yo @chickendinosaur/js-package:browser  
 
-Differences:  
+#### Differences:  
 
 * npm run benchmark  
 * npm run test  
 * Browser testing/benchmarking  
 
-#### ui
+### ui
 
 yo @chickendinosaur/js-package:ui  
 
 Visual UI components.
 
-Differences:  
+#### Differences:  
 
 * npm start  
 
