@@ -15,9 +15,7 @@ npm install @chickendinosaur/generator-js-package
 
 Differences are a list of difference from the base generator.
 
-### base
-
-#### yo @chickendinosaur/js-package  
+### yo @chickendinosaur/js-package  
 
 Contains everything that a base npm package needs to publish.
 
@@ -25,11 +23,9 @@ Contains everything that a base npm package needs to publish.
 * npm run clean
 * npm run deploy
 
-### node
-
 Code that runs in nodejs.
 
-#### yo @chickendinosaur/js-package:node  
+### yo @chickendinosaur/js-package:node  
 
 #### Differences:  
 
@@ -37,10 +33,7 @@ Code that runs in nodejs.
 * npm run test  
 * Node testing/benchmarking  
 
-
-### browser
-
-#### yo @chickendinosaur/js-package:browser  
+### yo @chickendinosaur/js-package:browser  
 
 Code that needs runs in the browser.
 
@@ -50,9 +43,7 @@ Code that needs runs in the browser.
 * npm run test  
 * Browser testing/benchmarking  
 
-### ui
-
-#### yo @chickendinosaur/js-package:ui  
+### yo @chickendinosaur/js-package:ui  
 
 Visual UI components.
 
