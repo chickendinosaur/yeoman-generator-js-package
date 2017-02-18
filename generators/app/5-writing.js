@@ -32,9 +32,10 @@ module.exports = function () {
 
 	// Create main files.
 	var mainFilePath = 'src/' + this.pkg.main;
-	if (!this.fs.exists(mainFilePath)) {
+	console.log(this.destinationPath(mainFilePath))
+	if (!this.fs.exists(this.destinationPath(mainFilePath))) {
 		this.fs.copy(
-			__dirname + '/templates/src/index.js',
+			this.templatePath('src/index.js'),
 			this.destinationPath(mainFilePath)
 		);
 	}

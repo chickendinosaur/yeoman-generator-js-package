@@ -4,16 +4,16 @@ module.exports = function () {
 	// Create main files.
 	var mainFilePath = 'src/' + this.pkg.main || 'index.js';
 	
-	if (!this.fs.exists(mainFilePath)) {
+	if (!this.fs.exists(this.destinationPath(mainFilePath).replace('.js', '.benchmark.js'))) {
 		this.fs.copy(
-			__dirname + '/templates/src/index.benchmark.js',
+			this.templatePath('src/index.benchmark.js'),
 			this.destinationPath(mainFilePath.replace('.js', '.benchmark.js'))
 		);
 	}
 	
-	if (!this.fs.exists(mainFilePath)) {
+	if (!this.fs.exists(this.destinationPath(mainFilePath).replace('.js', '.spec.js'))) {
 		this.fs.copy(
-			__dirname + '/templates/src/index.spec.js',
+			this.templatePath('src/index.spec.js'),
 			this.destinationPath(mainFilePath.replace('.js', '.spec.js'))
 		);
 	}

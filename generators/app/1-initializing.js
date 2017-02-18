@@ -4,8 +4,8 @@ const arrayUnion = require('array-union');
 
 module.exports = function () {
 	this.paths = {
-		pkg: this.destinationPath() + '/package.json',
-		pkgTemplate: __dirname + '/templates' + '/package.json',
+		pkg: this.destinationPath('package.json'),
+		pkgTemplate: this.templatePath('package.json'),
 		readme: this.destinationPath() + '/README.md',
 		readmeTemplate: __dirname + '/templates' + '/README.md',
 		gitignore: this.destinationPath() + '/.gitignore',
@@ -43,6 +43,15 @@ module.exports = function () {
 	this.pkg.homepage = this.pkg.homepage ?
 		this.pkg.homepage.split('#')[0] :
 		'https://github.com/repoNamespace/repoName';
+
+	// Alter main if in sub directory for publishing lib.
+	var mainFilePath = this.pkg.main.split('/')
+	this.pkg.main = mainFilePath[mainFilePath.length -1];
+
+	// Set files.
+	this.pkg.files = [
+		'**/*.js'
+	];
 
 	// Dependency objects.
 	this.pkg.peerDependencies = {};
