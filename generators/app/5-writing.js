@@ -32,10 +32,12 @@ module.exports = function () {
 
 	// Create main files.
 	var mainFilePath = 'src/' + this.pkg.main;
-	this.fs.copy(
-		__dirname + '/templates/' + mainFilePath,
-		this.destinationPath(mainFilePath)
-	);
+	if (!this.fs.exists(mainFilePath)) {
+		this.fs.copy(
+			__dirname + '/templates/src/index.js',
+			this.destinationPath(mainFilePath)
+		);
+	}
 
 	// Sort scripts.
 	this.pkg.scripts = generatedSortedObject(this.pkg.scripts);
