@@ -4,9 +4,7 @@ const fs = require('fs');
 
 module.exports = function () {
 	// Copy templates.
-	if (!this.fs.exists(this.paths.gitignore)) {
-		this.fs.copy(this.paths.gitignoreTemplate, this.paths.gitignore);
-	}
+	this.fs.copy(this.paths.gitignoreTemplate, this.paths.gitignore);
 
 	if (!this.fs.exists(this.destinationPath() + '/.babelrc')) {
 		this.fs.copy(__dirname + '/templates' + '/.babelrc', this.destinationPath() + '/.babelrc');

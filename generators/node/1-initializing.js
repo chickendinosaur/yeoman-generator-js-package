@@ -10,6 +10,10 @@ module.exports = function () {
 		this.pkg = {};
 	}
 
+	// Alter main if in sub directory for publishing lib.
+	var mainFilePath = this.pkg.main.split('/')
+	this.pkg.main = mainFilePath[mainFilePath.length -1];
+
 	this.options.scripts = Object.assign({
 		benchmark: 'cd src & for /R %i in (*.benchmark.js) do echo. & echo %i & echo. & babel %i | node',
 		deploy: 'npm run test && npm run build && npm publish lib/',
