@@ -15,6 +15,8 @@ Setup
 Benchmark
 */
 
+console.log();
+
 suite
     .add('benchmark', function () {})
     .on('cycle', function (event) {

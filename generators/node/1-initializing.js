@@ -12,12 +12,12 @@ module.exports = function () {
 
 	// Alter main if in sub directory for publishing lib.
 	var mainFilePath = this.pkg.main.split('/')
-	this.pkg.main = mainFilePath[mainFilePath.length -1];
+	this.pkg.main = mainFilePath[mainFilePath.length - 1];
 
 	this.options.scripts = Object.assign({
-		benchmark: 'cd src & for /R %i in (*.benchmark.js) do echo. & echo %i & echo. & babel %i | node',
+		benchmark: 'tape src/**/*.benchmark.js | tap-spec',
 		deploy: 'npm run test && npm run build && npm publish lib/',
-		test: 'cd src & for /R %i in (*.spec.js) do babel %i | node | tap-spec'
+		test: 'tape src/**/*.test.js | tap-spec'
 	}, this.options.scripts || {});
 
 	// Peer dependencies to install
