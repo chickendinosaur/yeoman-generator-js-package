@@ -8,7 +8,8 @@
 		"yeoman-generator",
 		"module",
 		"javascript",
-		"api"
+		"api",
+		"nodejs"
 	],
 	"author": "John Pittman",
 	"license": "MIT",

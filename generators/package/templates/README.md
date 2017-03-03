@@ -39,8 +39,8 @@ Result
 
 ## Installation  
 
-~/project/:
-
+* git clone <%= repo %>
+* cd <%= repoName %>
 * npm install
 
 ## Build  

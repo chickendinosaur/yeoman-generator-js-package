@@ -47,8 +47,8 @@ Visual UI components.
 
 ## Installation  
 
-~/project/:
-
+* git clone git@github.com:chickendinosaur/yeoman-generator-node.git
+* cd yeoman-generator-node
 * npm install
 * npm link
 

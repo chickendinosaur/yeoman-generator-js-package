@@ -20,7 +20,10 @@ module.exports = function () {
 	}
 
 	if (!this.fs.exists(this.paths.readme)) {
+		var repositorySplit = this.pkg.repository.url.split('/');
 		this.fs.copyTpl(this.paths.readmeTemplate, this.paths.readme, {
+			repo: this.pkg.repository.url.replace('git+', ''),
+			repoName: repositorySplit[repositorySplit.length - 1].replace('.git', ''),
 			packageName: this.pkg.name,
 			description: this.pkg.description,
 			license: this.fs.read(this.paths.license)
@@ -36,14 +39,14 @@ module.exports = function () {
 		!this.fs.exists(this.destinationPath('benchmark/' + this.pkg.main).replace('.js', '.benchmark.js'))) {
 		mkdirSync('benchmark');
 		this.fs.copy(this.templatePath('benchmark/index.benchmark.js'),
-		this.destinationPath(('benchmark/' + this.pkg.main).replace('.js', '.benchmark.js')));
+			this.destinationPath(('benchmark/' + this.pkg.main).replace('.js', '.benchmark.js')));
 	}
 
 	if (!this.fs.exists(this.destinationPath('test')) &&
 		!this.fs.exists(this.destinationPath('test/' + this.pkg.main).replace('.js', '.spec.js'))) {
 		mkdirSync('test');
 		this.fs.copy(this.templatePath('test/index.spec.js'),
-		this.destinationPath(('test/' + this.pkg.main).replace('.js', '.spec.js')));
+			this.destinationPath(('test/' + this.pkg.main).replace('.js', '.spec.js')));
 	}
 
 	// Sort scripts.
