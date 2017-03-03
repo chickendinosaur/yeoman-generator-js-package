@@ -7,7 +7,7 @@ module.exports = {
 	devtool: 'eval',
 	devServer: {
 		contentBase: path.join(__dirname, 'example'),
-		publicPath: '/',
+		publicPath: '/public',
 		open: true,
 		historyApiFallback: true,
 		hot: true,
@@ -22,7 +22,7 @@ module.exports = {
 		]
 	},
 	output: {
-		publicPath: '/',
+		publicPath: '/public',
 		filename: 'app/[name].js'
 	},
 	module: {

@@ -1,32 +1,32 @@
 {
-  "name": "@chickendinosaur/generator-npm-package",
-  "version": "0.0.1",
-  "description": "Scaffolding generator for JavaScript modules.",
-  "main": "generators/app/index.js",
-  "scripts": {},
-  "keywords": [
-    "yeoman-generator",
-    "module",
-    "javascript"
-  ],
-  "author": "John Pittman",
-  "license": "MIT",
-  "files": [
-    "generators"
-  ],
-  "private": false,
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/chickendinosaur/yeoman-generator-js-package.git"
-  },
-  "bugs": {
-    "url": "https://github.com/chickendinosaur/yeoman-generator-js-package/issues"
-  },
-  "homepage": "https://github.com/chickendinosaur/yeoman-generator-js-package#readme",
-  "dependencies": {
-    "yeoman-generator": "^1.1.0"
-  },
-  "devDependencies": {
-    "array-union": "^1.0.2"
-  }
+	"name": "@chickendinosaur/generator-node",
+	"version": "0.0.1",
+	"description": "Scaffolding generators for the nodejs environment.",
+	"main": "generators/app/index.js",
+	"scripts": {},
+	"keywords": [
+		"yeoman-generator",
+		"module",
+		"javascript",
+		"api"
+	],
+	"author": "John Pittman",
+	"license": "MIT",
+	"files": [
+		"generators"
+	],
+	"private": false,
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/chickendinosaur/yeoman-generator-node.git"
+	},
+	"bugs": {
+		"url": "https://github.com/chickendinosaur/yeoman-generator-node/issues"
+	},
+	"homepage": "https://github.com/chickendinosaur/yeoman-generator-node#readme",
+	"dependencies": {
+		"yeoman-generator": "^1.1.0",
+		"array-union": "^1.0.2"
+
+	}
 }

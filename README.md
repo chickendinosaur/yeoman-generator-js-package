@@ -1,4 +1,4 @@
-Scaffolding generator for JavaScript modules.  
+Scaffolding generators for the nodejs environment.  
 
 ---  
 
@@ -9,46 +9,36 @@ Scaffolding generator for JavaScript modules.
 ### npm  
 
 npm install yeoman -g  
-npm install @chickendinosaur/generator-js-package  
+npm install @chickendinosaur/generator-node  
 
 ## Usage
 
 Differences are a list of difference from the base generator.
 
-### yo @chickendinosaur/js-package  
+### yo @chickendinosaur/node  
+
+List of generators to run.
+
+### yo @chickendinosaur/node:package  
 
 Contains everything that a base npm package needs to publish.
+Code that runs in nodejs.
 
+* npm run benchmark  
 * npm run build
 * npm run clean
 * npm run deploy
-
-Code that runs in nodejs.
-
-### yo @chickendinosaur/js-package:node  
-
-#### Differences:  
-
-* npm run benchmark  
 * npm run test  
-* Node testing/benchmarking  
 
-### yo @chickendinosaur/js-package:browser  
+### yo @chickendinosaur/node:package-browser  
 
 Code that needs runs in the browser.
-
-#### Differences:  
-
-* npm run benchmark  
-* npm run test  
-* Browser testing/benchmarking  
-
-### yo @chickendinosaur/js-package:ui  
-
 Visual UI components.
 
 #### Differences:  
 
+* Browser testing/benchmarking  
+* Example app for visual testing
 * npm start  
 
 ---  
