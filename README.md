@@ -21,7 +21,7 @@ List of generators to run.
 
 ### yo @chickendinosaur/node:package  
 
-Contains everything that a base npm package needs to publish.
+Contains everything that a base npm package needs to publish.  
 Code that runs in nodejs.
 
 * npm run benchmark  
