@@ -15,8 +15,6 @@ Setup
 Benchmark
 */
 
-console.log();
-
 suite
     .add('benchmark', function () {})
     .on('cycle', function (event) {
@@ -31,4 +29,3 @@ suite
     })
     // Run async
     .run({ 'async': false });
-

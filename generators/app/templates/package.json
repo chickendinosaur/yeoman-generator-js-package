@@ -2,14 +2,8 @@
 	"name": "",
 	"version": "0.0.1",
 	"main": "index.js",
-	"files": [
-		"**/*.js"
-	],
-	"scripts": {
-		"build": "npm run clean && babel src -d build && babel build -d lib --ignore *.*.js && cp package.json lib & cp README.md lib & cp LICENSE lib",
-		"clean": "rm -rf lib && rm -rf build*",
-		"deploy": "npm run build && npm publish lib/"
-	},
+	"files": [],
+	"scripts": {},
 	"author": "",
 	"license": "MIT",
 	"description": "",
@@ -22,8 +16,5 @@
 	"bugs": {
 		"url": "https://github.com/repoNamespace/repoName/issues"
 	},
-	"homepage": "https://github.com/repoNamespace/repoName#readme",
-	"generator-module": {
-		"global": false
-	}
+	"homepage": "https://github.com/repoNamespace/repoName#readme"
 }

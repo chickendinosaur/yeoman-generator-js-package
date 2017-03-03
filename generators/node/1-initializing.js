@@ -14,8 +14,11 @@ module.exports = function () {
 	var mainFilePath = this.pkg.main.split('/')
 	this.pkg.main = mainFilePath[mainFilePath.length - 1];
 
+	// Scripts on top of base generator.
 	this.options.scripts = Object.assign({
-		benchmark: 'tape src/**/*.benchmark.js | tap-spec',
+		"build": "npm run clean && babel src -d lib --ignore *.*.js && cp package.json lib & cp README.md lib & cp LICENSE lib",
+		"clean": "rm -rf lib",
+		benchmark: 'tape src/**/*.benchmark.js',
 		deploy: 'npm run test && npm run build && npm publish lib/',
 		test: 'tape src/**/*.test.js | tap-spec'
 	}, this.options.scripts || {});
@@ -28,6 +31,8 @@ module.exports = function () {
 
 	// Development dependencies to install
 	this.options.devDependencies = arrayUnion([
+		'babel-cli',
+		'babel-plugin-transform-es2015-modules-commonjs',
 		'benchmark',
 		'tape',
 		'tapes',

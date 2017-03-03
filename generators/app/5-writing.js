@@ -7,22 +7,21 @@ module.exports = function () {
 	this.fs.copy(this.paths.gitignoreTemplate, this.paths.gitignore);
 
 	if (!this.fs.exists(this.destinationPath() + '/.babelrc')) {
-		this.fs.copy(__dirname + '/templates' + '/.babelrc', this.destinationPath() + '/.babelrc');
+		this.fs.copy(__dirname + '/templates/.babelrc', this.destinationPath() + '/.babelrc');
 	}
+
+	this.fs.copy(__dirname + '/templates/.eslintrc.json', this.destinationPath() + '/.eslintrc.json');
 
 	if (!this.fs.exists(this.paths.license)) {
 		this.fs.copy(this.paths.licenseTemplates + this.pkg.license, this.paths.license);
 	}
 
 	if (!this.fs.exists(this.paths.readme)) {
-		this.fs.copyTpl(
-			this.paths.readmeTemplate,
-			this.paths.readme, {
-				packageName: this.pkg['generator-module'].global ? this.pkg.name + ' -g' : this.pkg.name,
-				description: this.pkg.description,
-				license: this.fs.read(this.paths.license)
-			}
-		);
+		this.fs.copyTpl(this.paths.readmeTemplate, this.paths.readme, {
+			packageName: this.pkg.name,
+			description: this.pkg.description,
+			license: this.fs.read(this.paths.license)
+		});
 	}
 
 	// Create folder structure.
@@ -30,12 +29,8 @@ module.exports = function () {
 
 	// Create main files.
 	var mainFilePath = 'src/' + this.pkg.main;
-	console.log(this.destinationPath(mainFilePath))
 	if (!this.fs.exists(this.destinationPath(mainFilePath))) {
-		this.fs.copy(
-			this.templatePath('src/index.js'),
-			this.destinationPath(mainFilePath)
-		);
+		this.fs.copy(this.templatePath('src/index.js'), this.destinationPath(mainFilePath));
 	}
 
 	// Sort scripts.

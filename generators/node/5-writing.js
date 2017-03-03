@@ -11,10 +11,10 @@ module.exports = function () {
 		);
 	}
 	
-	if (!this.fs.exists(this.destinationPath(mainFilePath).replace('.js', '.spec.js'))) {
+	if (!this.fs.exists(this.destinationPath(mainFilePath).replace('.js', '.test.js'))) {
 		this.fs.copy(
-			this.templatePath('src/index.spec.js'),
-			this.destinationPath(mainFilePath.replace('.js', '.spec.js'))
+			this.templatePath('src/index.test.js'),
+			this.destinationPath(mainFilePath.replace('.js', '.test.js'))
 		);
 	}
 };

@@ -1,22 +1,29 @@
+const path = require('path');
 const webpack = require('webpack');
+
+process.env.NODE_ENV = 'development';
 
 module.exports = {
 	devtool: 'eval',
 	devServer: {
-		contentBase: __dirname + '/example',
-		publicPath: '/public',
+		contentBase: path.join(__dirname, 'example'),
+		publicPath: '/',
 		open: true,
 		historyApiFallback: true,
 		hot: true,
 		inline: true,
-		clientLogLevel: 'none',
+		clientLogLevel: 'none'
 	},
-	entry: [
-		__dirname + '/example/app/index.js',
-		'webpack/hot/only-dev-server'
-	],
+	entry: {
+		commons: [],
+		index: [
+			'webpack/hot/only-dev-server',
+			path.join(__dirname, 'example/app/index.js')
+		]
+	},
 	output: {
-		filename: 'app/index.js'
+		publicPath: '/',
+		filename: 'app/[name].js'
 	},
 	module: {
 		rules: [
@@ -47,7 +54,12 @@ module.exports = {
 	},
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NamedModulesPlugin()
+		new webpack.NamedModulesPlugin(),
+		new webpack.optimize.CommonsChunkPlugin({
+			name: 'commons',
+			// filename: 'app/commons.js', // Finds common imports across modules.
+			minChunks: Infinity
+		})
 	],
 	resolve: {
 		extensions: [
