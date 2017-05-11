@@ -5,7 +5,7 @@ const arrayUnion = require('array-union');
 module.exports = function () {
 	this.paths = {
 		pkg: this.destinationPath('package.json'),
-		pkgTemplate: this.templatePath('package.json'),
+		pkgTemplate: __dirname + '/package.json',
 		readme: this.destinationPath() + '/README.md',
 		readmeTemplate: __dirname + '/templates' + '/README.md',
 		gitignore: this.destinationPath() + '/.gitignore',
@@ -68,7 +68,6 @@ module.exports = function () {
 	// Development dependencies to install
 	this.devDependencies = arrayUnion([
 		'babel-cli',
-		'babel-plugin-transform-es2015-modules-commonjs',
 		'benchmark',
 		'tape',
 		'tapes',

@@ -15,26 +15,13 @@ Test
 */
 
 test('Class', function (t) {
-
-	/*
-	beforeEach
-	*/
-
 	t.beforeEach(function (t) {
 		t.end();
 	});
 
-	/*
-	afterEach
-	*/
-
 	t.afterEach(function (t) {
 		t.end();
 	});
-
-	/*
-	Tests
-	*/
 
 	t.test('.method', function (t) {
 		t.equal(true, true, 'Test.');
@@ -43,4 +30,3 @@ test('Class', function (t) {
 
 	t.end();
 });
-
