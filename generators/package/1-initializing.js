@@ -5,11 +5,11 @@ const arrayUnion = require('array-union');
 module.exports = function () {
 	this.paths = {
 		pkg: this.destinationPath('package.json'),
-		pkgTemplate: __dirname + '/templates/package.json',
+		pkgTemplate: __dirname + '/templates/template-package.json',
 		readme: this.destinationPath() + '/README.md',
-		readmeTemplate: __dirname + '/templates' + '/README.md',
+		readmeTemplate: __dirname + '/templates/template-README.md',
 		gitignore: this.destinationPath() + '/.gitignore',
-		gitignoreTemplate: __dirname + '/templates' + '/.gitignore',
+		gitignoreTemplate: __dirname + '/templates/template-.gitignore',
 		license: this.destinationPath() + '/LICENSE',
 	};
 

@@ -10,13 +10,13 @@ module.exports = function () {
 	this.fs.copy(this.paths.gitignoreTemplate, this.paths.gitignore);
 
 	if (!this.fs.exists(this.destinationPath() + '/.babelrc')) {
-		this.fs.copy(__dirname + '/templates/.babelrc', this.destinationPath() + '/.babelrc');
+		this.fs.copy(__dirname + '/templates/template-.babelrc', this.destinationPath() + '/.babelrc');
 	}
 
-	this.fs.copy(__dirname + '/templates/.eslintrc.json', this.destinationPath() + '/.eslintrc.json');
+	this.fs.copy(__dirname + '/templates/template-.eslintrc.json', this.destinationPath() + '/.eslintrc.json');
 
 	if (!this.fs.exists(this.paths.license)) {
-		this.fs.copy(__dirname + '/license-' + this.pkg.license.toLowerCase(), this.paths.license);
+		this.fs.copy(__dirname + '/template-license-' + this.pkg.license.toLowerCase(), this.paths.license);
 	}
 
 	if (!this.fs.exists(this.paths.readme)) {
@@ -32,20 +32,20 @@ module.exports = function () {
 
 	// Create main files.
 	if (!this.fs.exists(this.destinationPath('src/' + this.pkg.main))) {
-		this.fs.copy(this.templatePath('index.js'), this.destinationPath('src/' + this.pkg.main));
+		this.fs.copy(this.templatePath('template-index.js'), this.destinationPath('src/' + this.pkg.main));
 	}
 
 	if (!this.fs.exists(this.destinationPath('benchmark')) &&
 		!this.fs.exists(this.destinationPath('benchmark/' + this.pkg.main).replace('.js', '.benchmark.js'))) {
 		mkdirSync('benchmark');
-		this.fs.copy(this.templatePath('index.benchmark.js'),
+		this.fs.copy(this.templatePath('template-index.benchmark.js'),
 			this.destinationPath(('benchmark/' + this.pkg.main).replace('.js', '.benchmark.js')));
 	}
 
 	if (!this.fs.exists(this.destinationPath('test')) &&
 		!this.fs.exists(this.destinationPath('test/' + this.pkg.main).replace('.js', '.spec.js'))) {
 		mkdirSync('test');
-		this.fs.copy(this.templatePath('index.spec.js'),
+		this.fs.copy(this.templatePath('template-index.spec.js'),
 			this.destinationPath(('test/' + this.pkg.main).replace('.js', '.spec.js')));
 	}
 
