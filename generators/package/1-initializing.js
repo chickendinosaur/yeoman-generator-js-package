@@ -5,7 +5,7 @@ const arrayUnion = require('array-union');
 module.exports = function () {
 	this.paths = {
 		pkg: this.destinationPath('package.json'),
-		pkgTemplate: __dirname + '/package.json',
+		pkgTemplate: __dirname + '/templates/package.json',
 		readme: this.destinationPath() + '/README.md',
 		readmeTemplate: __dirname + '/templates' + '/README.md',
 		gitignore: this.destinationPath() + '/.gitignore',
