@@ -3,18 +3,14 @@
 const tape = require('tape');
 const tapes = require('tapes');
 const test = tapes(tape, {
-	delimiter: '->'
+	delimiter: '.'
 });
 
-/*
-Setup
-*/
-
-/*
-Test
-*/
-
 test('Class', function (t) {
+  /*
+  Setup
+  */
+
 	t.beforeEach(function (t) {
 		t.end();
 	});
@@ -23,7 +19,11 @@ test('Class', function (t) {
 		t.end();
 	});
 
-	t.test('.method', function (t) {
+  /*
+  Test
+  */
+
+	t.test('method', function (t) {
 		t.equal(true, true, 'Test.');
 		t.end();
 	});

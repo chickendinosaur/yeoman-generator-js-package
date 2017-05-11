@@ -1,4 +1,6 @@
 {
 	"presets": [],
-	"plugins": []
+	"plugins": [
+    "transform-imports"
+  ]
 }

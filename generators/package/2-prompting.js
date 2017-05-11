@@ -1,7 +1,5 @@
 'use strict';
 
-const fs = require('fs');
-
 module.exports = function () {
 	return this.prompt([
 		{
@@ -60,7 +58,7 @@ module.exports = function () {
 			type: 'list',
 			name: 'license',
 			message: 'license:',
-			choices: fs.readdirSync(this.paths.licenseTemplates),
+			choices: ['MIT'],
 			default: this.pkg.license
 		}, {
 			type: 'input',

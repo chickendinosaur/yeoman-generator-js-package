@@ -11,7 +11,6 @@ module.exports = function () {
 		gitignore: this.destinationPath() + '/.gitignore',
 		gitignoreTemplate: __dirname + '/templates' + '/.gitignore',
 		license: this.destinationPath() + '/LICENSE',
-		licenseTemplates: __dirname + '/templates' + '/licenses/'
 	};
 
 	this.answers;
@@ -54,9 +53,9 @@ module.exports = function () {
 	this.pkg.scripts = Object.assign(this.pkg.scripts, {
 		"build": "npm run clean && babel src -d lib --ignore *.*.js* && cp package.json lib & cp README.md lib & cp LICENSE lib",
 		"clean": "rm -rf lib",
-		benchmark: 'tape benchmark/**/*.benchmark.js',
+		benchmark: 'babel-tape-runner benchmark/**/*.benchmark.js',
 		deploy: "npm run test && eslint src --fix && eslint example --fix && npm run build && npm publish lib",
-		test: 'tape test/**/*.spec.js | tap-spec'
+		test: 'babel-tape-runner test/**/*.spec.js | tap-spec'
 	}, this.options.scripts || {});
 
 	// Peer dependencies to install
@@ -68,17 +67,16 @@ module.exports = function () {
 	// Development dependencies to install
 	this.devDependencies = arrayUnion([
 		'babel-cli',
+    'babel-plugin-transform-imports',
+    'babel-tape-runner',
 		'benchmark',
 		'tape',
 		'tapes',
 		'tap-spec',
 		"eslint",
-		"eslint-config-standard",
-		"eslint-config-standard-jsx",
 		"eslint-plugin-html",
-		"eslint-plugin-promise",
-		"eslint-plugin-react",
-		"eslint-plugin-standard"
+    "eslint-plugin-import",
+    "eslint-config-airbnb-base"
 	], this.options.devDependencies || []);
 };
 
