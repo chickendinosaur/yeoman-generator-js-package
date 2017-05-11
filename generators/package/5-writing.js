@@ -16,7 +16,7 @@ module.exports = function () {
 	this.fs.copy(__dirname + '/templates/template-.eslintrc.json', this.destinationPath() + '/.eslintrc.json');
 
 	if (!this.fs.exists(this.paths.license)) {
-		this.fs.copy(__dirname + '/template-license-' + this.pkg.license.toLowerCase(), this.paths.license);
+		this.fs.copy(__dirname + '/templates/template-license-' + this.pkg.license.toLowerCase(), this.paths.license);
 	}
 
 	if (!this.fs.exists(this.paths.readme)) {
