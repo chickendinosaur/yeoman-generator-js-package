@@ -1,60 +1,46 @@
-Scaffolding generators for the nodejs environment.  
+Scaffolding generator for nodejs packages.
 
----  
+---
 
-# Getting Started  
+# Getting Started
 
 ## Installation
 
-### npm  
+### npm
 
-npm install yeoman -g  
-npm install @chickendinosaur/generator-node  
+npm install yeoman -g
+npm install @chickendinosaur/generator-node-package
 
 ## Usage
 
-Differences are a list of difference from the base generator.
+### yo @chickendinosaur/node-package
 
-### yo @chickendinosaur/node  
+#### Contains
+- Everything that a npm package needs to publish.
+- Default test suite. (tape)
 
-List of generators to run.
+#### Script
 
-### yo @chickendinosaur/node:package  
-
-Contains everything that a base npm package needs to publish.  
-Code that runs in nodejs.
-
-* npm run benchmark  
+* npm run benchmark
 * npm run build
 * npm run clean
 * npm run deploy
-* npm run test  
+* npm run test
 
-### yo @chickendinosaur/node:package-browser  
+---
 
-Code that needs runs in the browser.
-Visual UI components.
+# Development
 
-#### Differences:  
+## Installation
 
-* Browser testing/benchmarking  
-* Example app for visual testing
-* npm start  
-
----  
-
-# Development  
-
-## Installation  
-
-* git clone git@github.com:chickendinosaur/yeoman-generator-node.git
-* cd yeoman-generator-node
+* git clone git@github.com:chickendinosaur/yeoman-generator-node-package.git
+* cd yeoman-generator-node-package
 * npm install
 * npm link
 
----  
+---
 
-# License  
+# License
 
 The MIT License (MIT)
 

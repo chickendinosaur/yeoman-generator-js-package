@@ -1,7 +1,7 @@
 {
-  "name": "@chickendinosaur/generator-node",
+  "name": "@chickendinosaur/generator-node-package",
   "version": "0.0.6",
-  "description": "Scaffolding generators for the nodejs environment.",
+  "description": "Scaffolding generator nodejs packages.",
   "main": "generators/app/index.js",
   "scripts": {},
   "keywords": [
@@ -19,12 +19,12 @@
   "private": false,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chickendinosaur/yeoman-generator-node.git"
+    "url": "git+https://github.com/chickendinosaur/yeoman-generator-node-package.git"
   },
   "bugs": {
-    "url": "https://github.com/chickendinosaur/yeoman-generator-node/issues"
+    "url": "https://github.com/chickendinosaur/yeoman-generator-node-package/issues"
   },
-  "homepage": "https://github.com/chickendinosaur/yeoman-generator-node#readme",
+  "homepage": "https://github.com/chickendinosaur/yeoman-generator-node-package#readme",
   "dependencies": {
     "yeoman-generator": "^1.1.0",
     "array-union": "^1.0.2"
