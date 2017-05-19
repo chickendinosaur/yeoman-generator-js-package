@@ -5,8 +5,14 @@ const fs = require('fs');
 module.exports = function () {
 	// Copy templates.
 	this.fs.copy(this.paths.gitignoreTemplate, this.paths.gitignore);
-	this.fs.copy(__dirname + '/templates/template-.babelrc', this.destinationPath() + '/.babelrc');
-	this.fs.copy(__dirname + '/templates/template-.eslintrc.json', this.destinationPath() + '/.eslintrc.json');
+
+  if (!fs.existsSync('./.babelrc')) {
+  	this.fs.copy(__dirname + '/templates/template-.babelrc', this.destinationPath() + '/.babelrc');
+  }
+
+  if (!fs.existsSync('./.eslintrc.json')) {
+  	this.fs.copy(__dirname + '/templates/template-.eslintrc.json', this.destinationPath() + '/.eslintrc.json');
+  }
 
 	if (!this.fs.exists(this.paths.license)) {
 		this.fs.copy(__dirname + '/templates/template-license-' + this.pkg.license.toLowerCase(), this.paths.license);
