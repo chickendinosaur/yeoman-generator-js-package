@@ -55,7 +55,7 @@ module.exports = function () {
 		"clean": "rm -rf lib",
 		benchmark: 'babel-tape-runner benchmark/**/*.benchmark.js',
 		deploy: "npm run test && eslint src --fix && eslint example --fix && npm run build && npm publish lib",
-		test: 'babel-tape-runner test/**/*.spec.js | tap-spec'
+		test: 'babel-tape-runner test/**/*.spec.js'
 	}, this.options.scripts || {});
 
 	// Peer dependencies to install
@@ -67,16 +67,18 @@ module.exports = function () {
 	// Development dependencies to install
 	this.devDependencies = arrayUnion([
 		'babel-cli',
-    'babel-plugin-transform-imports',
+    'babel-eslint',
     'babel-tape-runner',
 		'benchmark',
 		'tape',
 		'tapes',
 		'tap-spec',
 		"eslint",
+    "eslint-config-airbnb",
 		"eslint-plugin-html",
     "eslint-plugin-import",
-    "eslint-config-airbnb-base"
+    "eslint-plugin-jsx-a11y@^4.0.0",
+    "eslint-plugin-react"
 	], this.options.devDependencies || []);
 };
 

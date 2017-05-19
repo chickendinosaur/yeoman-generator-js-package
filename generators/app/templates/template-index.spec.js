@@ -2,11 +2,12 @@
 
 const tape = require('tape');
 const tapes = require('tapes');
-const test = tapes(tape, {
+
+const describe = tapes(tape, {
 	delimiter: '.'
 });
 
-test('Class', function (t) {
+describe('Class', function (t) {
   /*
   Setup
   */
