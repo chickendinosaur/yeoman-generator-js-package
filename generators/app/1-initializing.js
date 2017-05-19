@@ -77,7 +77,7 @@ module.exports = function () {
     "eslint-config-airbnb",
 		"eslint-plugin-html",
     "eslint-plugin-import",
-    "eslint-plugin-jsx-a11y@^4.0.0",
+    "eslint-plugin-jsx-a11y@^5.0.0",
     "eslint-plugin-react"
 	], this.options.devDependencies || []);
 };
