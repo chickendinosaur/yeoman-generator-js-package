@@ -3,9 +3,6 @@
 const fs = require('fs');
 
 module.exports = function () {
-	// Create folder structure.
-	mkdirSync('src');
-
 	// Copy templates.
 	this.fs.copy(this.paths.gitignoreTemplate, this.paths.gitignore);
 	this.fs.copy(__dirname + '/templates/template-.babelrc', this.destinationPath() + '/.babelrc');
@@ -28,15 +25,18 @@ module.exports = function () {
 
 	// Create main files.
 	if (!fs.existsSync('./src')) {
+    mkdirSync('./src');
 		this.fs.copy(this.templatePath('template-index.js'), this.destinationPath('src/' + this.pkg.main));
 	}
 
 	if (!fs.existsSync('./benchmark')) {
+    mkdirSync('./benchmark');
 		this.fs.copy(this.templatePath('template-index.benchmark.js'),
 			this.destinationPath(('benchmark/' + this.pkg.main).replace('template-index', this.pkg.main)));
 	}
 
 	if (!fs.existsSync('./test')) {
+    mkdirSync('./test');
 		this.fs.copy(this.templatePath('template-index.spec.js'),
 			this.destinationPath(('test/' + this.pkg.main).replace('template-index', this.pkg.main)));
 	}
