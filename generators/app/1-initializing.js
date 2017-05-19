@@ -58,6 +58,11 @@ module.exports = function () {
 		test: 'babel-tape-runner test/**/*.spec.js'
 	}, this.options.scripts || {});
 
+  this.babel = this.options.babel || {
+  	presets: [],
+  	plugins: []
+  };
+
 	// Peer dependencies to install
 	this.peerDependencies = arrayUnion([], this.options.peerDependencies || []);
 

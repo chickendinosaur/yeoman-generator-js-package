@@ -6,10 +6,6 @@ module.exports = function () {
 	// Copy templates.
 	this.fs.copy(this.paths.gitignoreTemplate, this.paths.gitignore);
 
-  if (!fs.existsSync(this.destinationPath('.babelrc'))) {
-  	this.fs.copy(__dirname + '/templates/template-.babelrc', this.destinationPath() + '/.babelrc');
-  }
-
   if (!fs.existsSync(this.destinationPath('.eslintrc.json'))) {
   	this.fs.copy(__dirname + '/templates/template-.eslintrc.json', this.destinationPath() + '/.eslintrc.json');
   }
@@ -51,7 +47,8 @@ module.exports = function () {
 	this.pkg.scripts = generatedSortedObject(this.pkg.scripts);
 
 	// Write in memory files.
-	this.fs.writeJSON(this.paths.pkg, this.pkg);
+  this.fs.writeJSON(this.paths.pkg, this.pkg);
+	this.fs.writeJSON(this.destinationPath('.babelrc'), this.babel);
 };
 
 function mkdirSync(path) {
