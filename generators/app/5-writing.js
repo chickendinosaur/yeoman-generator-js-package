@@ -6,19 +6,19 @@ module.exports = function () {
 	// Copy templates.
 	this.fs.copy(this.paths.gitignoreTemplate, this.paths.gitignore);
 
-  if (!this.fs.exists('./.babelrc')) {
+  if (!fs.existsSync(this.destinationPath('.babelrc'))) {
   	this.fs.copy(__dirname + '/templates/template-.babelrc', this.destinationPath() + '/.babelrc');
   }
 
-  if (!this.fs.exists('./.eslintrc.json')) {
+  if (!fs.existsSync(this.destinationPath('.eslintrc.json'))) {
   	this.fs.copy(__dirname + '/templates/template-.eslintrc.json', this.destinationPath() + '/.eslintrc.json');
   }
 
-	if (!this.fs.exists(this.paths.license)) {
+	if (!fs.existsSync(this.destinationPath(this.paths.license))) {
 		this.fs.copy(__dirname + '/templates/template-license-' + this.pkg.license.toLowerCase(), this.paths.license);
 	}
 
-	if (!this.fs.exists(this.paths.readme)) {
+	if (!fs.existsSync(this.destinationPath(this.paths.readme))) {
 		var repositorySplit = this.pkg.repository.url.split('/');
 		this.fs.copyTpl(this.paths.readmeTemplate, this.paths.readme, {
 			repo: this.pkg.repository.url.replace('git+', ''),
@@ -30,18 +30,18 @@ module.exports = function () {
 	}
 
 	// Create main files.
-	if (!this.fs.exists('./src')) {
+	if (!fs.existsSync(this.destinationPath('src'))) {
     mkdirSync('./src');
 		this.fs.copy(this.templatePath('template-index.js'), this.destinationPath('src/' + this.pkg.main));
 	}
 
-	if (!this.fs.exists('./benchmark')) {
+	if (!fs.existsSync(this.destinationPath('benchmark'))) {
     mkdirSync('./benchmark');
 		this.fs.copy(this.templatePath('template-index.benchmark.js'),
 			this.destinationPath(('benchmark/' + this.pkg.main).replace('template-index', this.pkg.main)));
 	}
 
-	if (!this.fs.exists('./test')) {
+	if (!fs.existsSync(this.destinationPath('test'))) {
     mkdirSync('./test');
 		this.fs.copy(this.templatePath('template-index.spec.js'),
 			this.destinationPath(('test/' + this.pkg.main).replace('template-index', this.pkg.main)));
@@ -61,7 +61,7 @@ function mkdirSync(path) {
 }
 
 function writeFileSync(path, data, overwrite) {
-	if (!this.fs.exists(path) || overwrite) {
+	if (!fs.existsSync(path) || overwrite) {
 		fs.writeFileSync(path, data);
 	}
 }
