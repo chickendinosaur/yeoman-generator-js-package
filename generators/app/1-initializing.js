@@ -77,7 +77,6 @@ module.exports = function () {
 		'benchmark',
 		'tape',
 		'tapes',
-		'tap-spec',
 		"eslint",
     "eslint-config-airbnb",
 		"eslint-plugin-html",
