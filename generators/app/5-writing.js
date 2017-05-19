@@ -6,11 +6,11 @@ module.exports = function () {
 	// Copy templates.
 	this.fs.copy(this.paths.gitignoreTemplate, this.paths.gitignore);
 
-  if (!fs.existsSync('./.babelrc')) {
+  if (!this.fs.exists('./.babelrc')) {
   	this.fs.copy(__dirname + '/templates/template-.babelrc', this.destinationPath() + '/.babelrc');
   }
 
-  if (!fs.existsSync('./.eslintrc.json')) {
+  if (!this.fs.exists('./.eslintrc.json')) {
   	this.fs.copy(__dirname + '/templates/template-.eslintrc.json', this.destinationPath() + '/.eslintrc.json');
   }
 
@@ -30,18 +30,18 @@ module.exports = function () {
 	}
 
 	// Create main files.
-	if (!fs.existsSync('./src')) {
+	if (!this.fs.exists('./src')) {
     mkdirSync('./src');
 		this.fs.copy(this.templatePath('template-index.js'), this.destinationPath('src/' + this.pkg.main));
 	}
 
-	if (!fs.existsSync('./benchmark')) {
+	if (!this.fs.exists('./benchmark')) {
     mkdirSync('./benchmark');
 		this.fs.copy(this.templatePath('template-index.benchmark.js'),
 			this.destinationPath(('benchmark/' + this.pkg.main).replace('template-index', this.pkg.main)));
 	}
 
-	if (!fs.existsSync('./test')) {
+	if (!this.fs.exists('./test')) {
     mkdirSync('./test');
 		this.fs.copy(this.templatePath('template-index.spec.js'),
 			this.destinationPath(('test/' + this.pkg.main).replace('template-index', this.pkg.main)));
@@ -55,13 +55,13 @@ module.exports = function () {
 };
 
 function mkdirSync(path) {
-	if (!fs.existsSync(path)) {
+	if (!fs.exists(path)) {
 		fs.mkdirSync(path);
 	}
 }
 
 function writeFileSync(path, data, overwrite) {
-	if (!fs.existsSync(path) || overwrite) {
+	if (!this.fs.exists(path) || overwrite) {
 		fs.writeFileSync(path, data);
 	}
 }
