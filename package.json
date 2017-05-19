@@ -1,6 +1,6 @@
 {
   "name": "@chickendinosaur/generator-node-package",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Scaffolding generator nodejs packages.",
   "main": "generators/app/index.js",
   "scripts": {},
