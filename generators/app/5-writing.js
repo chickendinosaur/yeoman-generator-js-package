@@ -27,17 +27,17 @@ module.exports = function () {
 	}
 
 	// Create main files.
-	if (!fs.existsSync(this.destinationPath('src'))) {
+	if (!fs.existsSync('./src')) {
 		this.fs.copy(this.templatePath('template-index.js'), this.destinationPath('src/' + this.pkg.main));
 	}
 
-	if (!fs.existsSync(this.destinationPath('benchmark'))) {
+	if (!fs.existsSync('./benchmark')) {
 		mkdirSync('benchmark');
 		this.fs.copy(this.templatePath('template-index.benchmark.js'),
 			this.destinationPath(('benchmark/' + this.pkg.main).replace('.js', '.benchmark.js')));
 	}
 
-	if (!fs.existsSync(this.destinationPath('test'))) {
+	if (!fs.existsSync('./test')) {
 		mkdirSync('test');
 		this.fs.copy(this.templatePath('template-index.spec.js'),
 			this.destinationPath(('test/' + this.pkg.main).replace('.js', '.spec.js')));
