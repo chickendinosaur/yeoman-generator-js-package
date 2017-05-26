@@ -67,7 +67,7 @@ module.exports = function () {
 	this.peerDependencies = arrayUnion([], this.options.peerDependencies || []);
 
 	// dependencies to install
-	this.dependencies = arrayUnion([], this.options.peerDependencies || []);
+	this.dependencies = arrayUnion([], this.options.dependencies || []);
 
 	// Development dependencies to install
 	this.devDependencies = arrayUnion([
