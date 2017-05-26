@@ -45,7 +45,7 @@ module.exports = function () {
 	this.pkg.files = ['**/*'];
 
 	// Dependency objects.
-	this.pkg.peerDependencies = this.pkg.peerDependencies || {};
+	this.pkg.peerDependencies = Object.assign(this.pkg.peerDependencies, this.options.pkgPeerDependencies || {});
 	this.pkg.dependencies = this.pkg.dependencies || {};
 	this.pkg.devDependencies = this.pkg.devDependencies || {};
 
