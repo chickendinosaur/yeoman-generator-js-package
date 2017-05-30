@@ -28,6 +28,7 @@
 		"html"
 	],
 	"rules": {
+    "import/extensions": 0,
     "import/no-extraneous-dependencies": 0,
     "arrow-body-style": ["error", "always"],
     "arrow-parens": ["error", "always"],
