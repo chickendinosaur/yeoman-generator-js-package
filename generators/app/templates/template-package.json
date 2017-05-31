@@ -1,8 +1,8 @@
 {
 	"name": "",
 	"version": "0.0.1",
-	"main": "index.js",
-	"files": [],
+  "main": "lib/index.js",
+	"files": ["lib"],
 	"scripts": {},
 	"author": "",
 	"license": "MIT",

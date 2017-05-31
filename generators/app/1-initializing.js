@@ -41,9 +41,6 @@ module.exports = function () {
 	var mainFilePath = this.pkg.main.split('/')
 	this.pkg.main = mainFilePath[mainFilePath.length - 1];
 
-	// Set files.
-	this.pkg.files = ['**/*'];
-
 	// Dependency objects.
 	this.pkg.peerDependencies = Object.assign(this.pkg.peerDependencies || {}, this.options.pkgPeerDependencies || {});
 	this.pkg.dependencies = this.pkg.dependencies || {};
@@ -51,11 +48,12 @@ module.exports = function () {
 
 	// Merge scripts from sub-generators.
 	this.pkg.scripts = Object.assign(this.pkg.scripts, {
-		"build": "npm run clean && babel src -d lib && cp package.json lib & cp README.md lib & cp LICENSE lib",
-		"clean": "rm -rf lib",
-		benchmark: 'babel-tape-runner benchmark/**/*.benchmark.js',
-		deploy: "npm run test && eslint src --fix && eslint example --fix && npm run build && npm publish lib",
-		test: 'babel-tape-runner test/**/*.spec.js'
+		'build': 'npm run clean && babel src -d lib',
+		'clean': 'rm -rf lib',
+		'benchmark': 'babel-tape-runner benchmark/**/*.benchmark.js',
+    'lint': 'eslint "src/**/*.{jsx,js}" --fix && eslint "stories/**/*.{jsx,js}" --fix && eslint "test/**/*.{jsx,js}" --fix',
+    'prepublish': 'npm run test && npm run lint && npm run build',
+		'test': 'babel-tape-runner test/**/*.spec.js | tap-spec'
 	}, this.options.scripts || {});
 
   this.babel = this.options.babel || {
@@ -75,14 +73,15 @@ module.exports = function () {
     'babel-eslint',
     'babel-tape-runner',
 		'benchmark',
+    'tap-spec',
 		'tape',
 		'tapes',
-		"eslint",
-    "eslint-config-airbnb",
-		"eslint-plugin-html",
-    "eslint-plugin-import",
-    "eslint-plugin-jsx-a11y@^5.0.0",
-    "eslint-plugin-react"
+		'eslint',
+    'eslint-config-airbnb',
+		'eslint-plugin-html',
+    'eslint-plugin-import',
+    'eslint-plugin-jsx-a11y@^5.0.0',
+    'eslint-plugin-react'
 	], this.options.devDependencies || []);
 };
 

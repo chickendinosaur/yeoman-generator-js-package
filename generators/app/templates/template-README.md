@@ -1,66 +1,62 @@
 <%= description %>
 
----  
+---
 
-# Specs  
+# Specs
 
-## Performance  
-
-### <%= packageName %>
-
----  
-
-## Overhead  
+## Performance
 
 ### <%= packageName %>
 
----  
+---
 
-# Getting Started  
+## Overhead
+
+### <%= packageName %>
+
+---
+
+# Getting Started
 
 ## Installation
 
-### npm  
+### npm
 
 npm install <%= packageName %>
 
 ## Usage
 
 ```javascript
-const module = require('<%= packageName %>');
+import module from '<%= packageName %>';
 
 /*
 Result
 */
 ```
----  
+---
 
-# Development  
+# Development
 
-## Installation  
+## Installation
 
 * git clone <%= repo %>
 * cd <%= repoName %>
 * npm install
 
-## Build  
+## Build
 
 * npm run build
 
-## Benchmarking  
+## Benchmarking
 
 * npm run benchmark
 
-## Test  
+## Test
 
 * npm run test
 
-## Publish  
+---
 
-* npm run deploy
-
----  
-
-# License  
+# License
 
 <%= license %>
