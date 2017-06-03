@@ -50,10 +50,10 @@ module.exports = function () {
 	this.pkg.scripts = Object.assign(this.pkg.scripts, {
 		'build': 'npm run clean && babel src -d lib',
 		'clean': 'rm -rf lib',
-		'benchmark': 'babel-tape-runner benchmark/**/*.benchmark.js',
+		'benchmark': 'babel-tape-runner benchmark/**/*.benchmark.{jsx,js}',
     'lint': 'eslint "src/**/*.{jsx,js}" --fix && eslint "stories/**/*.{jsx,js}" --fix && eslint "test/**/*.{jsx,js}" --fix',
     'prepublish': 'npm run test && npm run lint && npm run build',
-		'test': 'babel-tape-runner test/**/*.spec.js | tap-spec'
+		'test': 'babel-tape-runner test/**/*.spec.{jsx,js} | tap-spec'
 	}, this.options.scripts || {});
 
   this.babel = this.options.babel || {
